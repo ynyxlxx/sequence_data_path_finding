@@ -67,28 +67,35 @@ def final_result(edge_list):
 
 def save_result(all_paths):
     cwd = os.getcwd()
-    textFile = cwd + '/PATH.txt'
+    textFile = cwd + '/PATH-split.txt'
     file = open(textFile, 'w+')
     for i in all_paths:
         file.write(','.join([j for j in i]) + "\n")
     file.close()
     return
 
+def get_gz():       # find out all the split ed file in cwd
+    path = os.getcwd()
+    ed_split = []
+    for filename in os.listdir(path):
+        ed_split += re.findall('ed.split.*', filename)
+    return ed_split
 
 
 time_start = timeit.default_timer()
 
 reads = sam_read('test.sam')
-ed = read_gz('ed.gz')
-node_dict = node_list(ed)
+all_gz_file = get_gz()
 
 result = []
 while reads != []:
-
     new_input = []
-    edge, new = get_edges(node_dict, reads)
-    result.extend(edge)
-    new_input.extend(new)
+    for filename in all_gz_file:
+        ed = read_gz(filename)
+        node_dict = node_list(ed)
+        edge, new = get_edges(node_dict, reads)
+        result.extend(edge)
+        new_input.extend(new)
 
     reads = new_input
 
