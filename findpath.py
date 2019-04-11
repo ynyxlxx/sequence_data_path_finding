@@ -78,11 +78,17 @@ def save_result(all_paths):
 
 time_start = timeit.default_timer()
 
+print('loading sam file......')
 reads = sam_read('test.sam')
+print('loading complete.')
+print('loading gz file......')
 ed = read_gz('ed.gz')
+print('loading complete.')
+
 node_dict = node_list(ed)
 
 result = []
+count = 0
 while reads != []:
 
     new_input = []
@@ -91,10 +97,13 @@ while reads != []:
     new_input.extend(new)
 
     reads = new_input
+    count = count + 1
+    print('iteration ' + str(count) + ' complete.')
 
 print('computing result....')
 final_path = final_result(result)
 save_result(final_path)
 print('complete')
+print('check the result in the PATH.txt')
 time_end = timeit.default_timer()
 print('total time is: '+ str(time_end - time_start) + 's')

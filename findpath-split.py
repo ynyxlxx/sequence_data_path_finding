@@ -84,12 +84,20 @@ def get_gz():       # find out all the split ed file in cwd
 
 time_start = timeit.default_timer()
 
+print('loading sam file......')
 reads = sam_read('test.sam')
+print('loading complete.')
+print('finding out all the split gz file......')
 all_gz_file = get_gz()
+print('all split get.')
 
 result = []
+count = 0
+
+print('iteration search start.\n')
 while reads != []:
     new_input = []
+
     for filename in all_gz_file:
         ed = read_gz(filename)
         node_dict = node_list(ed)
@@ -98,10 +106,14 @@ while reads != []:
         new_input.extend(new)
 
     reads = new_input
+    count = count + 1
+
+    print('iteration ' + str(count) + ' complete.')
+    print( str(len(reads)) + 'nodes remains for next round.')
 
 print('computing result....')
 final_path = final_result(result)
 save_result(final_path)
-print('complete')
+print('check the result in the PATH-split.txt')
 time_end = timeit.default_timer()
 print('total time is: '+ str(time_end - time_start) + 's')
