@@ -109,7 +109,7 @@ while reads != []:
     count = count + 1
 
     print('iteration ' + str(count) + ' complete.')
-    print( str(len(reads)) + 'nodes remains for next round.')
+    print( str(len(reads)) + ' nodes remains for next round.')
 
 print('computing result....')
 final_path = final_result(result)

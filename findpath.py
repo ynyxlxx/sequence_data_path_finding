@@ -6,6 +6,7 @@ import networkx as nx
 import os
 
 
+
 def read_gz(filename):
     edge_list = []
     with gzip.open(filename, 'rt') as f:
