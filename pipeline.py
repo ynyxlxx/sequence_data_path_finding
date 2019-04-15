@@ -16,12 +16,12 @@ def sam_read(sam_file):    #read sequence ID from SAM file.
 
     return reads
 
-filename = 'test_new.gz'
-samfile = 'test_new.sam'
+filename = 'ed.gz'
+samfile = 'test.sam'
 reads = sam_read(samfile)
 
 G = nx.Graph()
-finish_node = []
+finished_node = []
 while reads != []:
     with gzip.open(filename, 'rt') as file:
 
@@ -35,13 +35,13 @@ while reads != []:
         print('reads_new: ' + str(reads_new))
 
         for node in reads:
-            # reads_new.remove(node)
-            finish_node.append(node)
+            finished_node.append(node)
 
-        for node in finish_node:
+        for node in finished_node:
             reads_new.remove(node)
 
-        print('reads after delete: ' + str(reads_new) + '\n')
+        print('reads after delete: ' + str(reads_new))
+        print('nodes finish: ' + str(finished_node) + '\n')
 
         reads = reads_new
 
