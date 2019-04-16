@@ -18,7 +18,7 @@ def sam_read(sam_file):    #read sequence ID from SAM file.
 
 def save_result(node_list):
     cwd = os.getcwd()
-    textFile = cwd + '/node.txt'
+    textFile = cwd + '/node-100.txt'
     file = open(textFile, 'w+')
     for i in node_list:
         file.write(''.join(i) + "\n")
@@ -28,8 +28,8 @@ def save_result(node_list):
 
 time_start = timeit.default_timer()
 
-filename = 'E:/DIrection study/E.coil/ed-ecoli.gz'
-samfile = 'E:/DIrection study/E.coil/ecoli2_and_lambda_mappedindex.sam'
+filename = 'E:/Direction study/E.coil/ed-ecoli-100.gz'
+samfile = 'E:/Direction study/E.coil/ecoli2_and_lambda_mappedindex.sam'
 reads = sam_read(samfile)
 
 node_dict = collections.defaultdict(list)

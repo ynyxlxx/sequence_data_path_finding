@@ -27,8 +27,8 @@ def save_result(node_list):
 
 time_start = timeit.default_timer()
 
-filename = 'E:/DIrection study/E.coil/ed-ecoli.gz'
-samfile = 'E:/DIrection study/E.coil/ecoli2_and_lambda_mappedindex.sam'
+filename = 'E:/Direction study/E.coil/ed-ecoli.gz'
+samfile = 'E:/Direction study/E.coil/ecoli2_and_lambda_mappedindex.sam'
 reads = sam_read(samfile)
 
 G = nx.Graph()
